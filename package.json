@@ -11,14 +11,29 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.sayHello",
+        "onCommand:extension.setGithubToken"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [{
             "command": "extension.sayHello",
             "title": "Hello World"
-        }]
+        }, {
+            "command": "extension.setGithubToken",
+            "title": "Set your github token"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "Github code review configuration",
+            "properties": {
+                "githubCodeReview.githubToken": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Your personal github token to see active pull requests."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
